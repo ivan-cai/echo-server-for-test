@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+        "fmt"
 	logs "github.com/sirupsen/logrus"
 	"net/http"
 
@@ -10,6 +11,7 @@ import (
 
 func main() {
 	router := mux.NewRouter()
+        fmt.Println("add log for test111")
 
 	router.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		logs.Infof("Hello Echo Server")
