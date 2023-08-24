@@ -2,25 +2,22 @@ package main
 
 import (
 	"encoding/json"
-        "fmt"
+	"github.com/gorilla/mux"
 	logs "github.com/sirupsen/logrus"
 	"net/http"
-
-	"github.com/gorilla/mux"
 )
 
 func main() {
 	router := mux.NewRouter()
-        fmt.Println("add log for test111")
 
 	router.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		logs.Infof("Hello Echo Server")
-		json.NewEncoder(w).Encode("Hello Echo Server")
+		logs.Infof("Hello Test Echo Server")
+		json.NewEncoder(w).Encode("Hello Test Echo Server")
 	})
 
 	router.HandleFunc("/version", func(w http.ResponseWriter, r *http.Request) {
-		logs.Infof("Hello Echo Server v2.0 @oversea")
-		json.NewEncoder(w).Encode("Hello Echo Server v2.0 @oversea")
+		logs.Infof("Hello Test Echo Server v2.0 @oversea")
+		json.NewEncoder(w).Encode("Hello Test Echo Server v2.0 @oversea")
 	})
 
 	http.ListenAndServe(":8080", router)
